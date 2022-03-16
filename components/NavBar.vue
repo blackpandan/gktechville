@@ -7,9 +7,9 @@ export default {
 <template>
     <nav class="navbar">
         <ul class="navbar__linksLeft">
-            <li class="navbar__linksLeft-link navbar--link">Home</li>    
-            <li class="navbar__linksLeft-link navbar--link">Contact</li>    
-            <li class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-user-alien"></i>Account</li>      
+            <NuxtLink to="/" class="navbar__linksLeft-link navbar--link">Home</NuxtLink>    
+            <NuxtLink to="contact" class="navbar__linksLeft-link navbar--link">Contact</NuxtLink>    
+            <NuxtLink to="account" class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-user-alien"></i>Account</NuxtLink>      
         </ul>
         <ul class="navbar__linksRight">
             <li class="navbar__linksRight-link navbar__linksRight-seaCover navbar--link navbar--linkGroup">
@@ -38,8 +38,9 @@ export default {
         &--link{
             font-size:0.9em;
             letter-spacing: 0.1em;
-            cursor: pointer; 
+            cursor: $cursor2; 
             color: $primary;
+            text-decoration: none;
 
             &:hover{
                 color: $secondary;
@@ -93,6 +94,7 @@ export default {
 
                     &Cover{
                         &:hover{
+                            cursor: $cursor2;
                             & .navbar__linksRight-seaText{
                                 color: $secondary;
                             }
@@ -107,7 +109,7 @@ export default {
 
                     &Cover{
                         &:hover{
-
+                            cursor: $cursor2;
                             & .navbar__linksRight-down{
                              & path{
                             fill: $secondary !important;

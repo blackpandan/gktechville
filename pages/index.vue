@@ -128,6 +128,7 @@ export default {
         
         &:hover{
           & .main__links-icon{
+            cursor: $cursor2;
             color: $secondary;
           }
         }
@@ -136,7 +137,7 @@ export default {
   }
 
   .button{
-    border: 0px;
+    border: none;
     font-size: 1.3em;
     letter-spacing: 0.2em;
     background-color: $secondary;
@@ -153,7 +154,7 @@ export default {
       &:hover{
         background-color: $primary;
         color: $secondary;
-        cursor: pointer;
+        cursor: $cursor2;
         box-shadow: 2px 3px 0 $secondary
       }
     }
