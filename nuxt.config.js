@@ -19,8 +19,12 @@ export default {
       {rel:"preconnect", href:"https://fonts.googleapis.com"},
       {rel:"preconnect", href:"https://fonts.gstatic.com", crossorigin:true},
       {href:"https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap", rel:"stylesheet"},
-      {href:"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap", rel:"stylesheet"}
+      {href:"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap", rel:"stylesheet"},
+    ],
+    script: [
+      {hid:"fontawesome", src:"https://kit.fontawesome.com/4c4a079b95.js", crossorigin:"anonymous", defer: true}
     ]
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
