@@ -119,7 +119,7 @@ export default {
     }
 
     .controller{
-        padding: 5vmin 20vmin 0 20vmin;
+        padding: 15vmin 20vmin 0 20vmin;
     }
 
     .innerController{
