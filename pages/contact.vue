@@ -42,6 +42,7 @@ export default {
         &__head{
             font-size: 13vmin;
         color: $primary;
+        font-family: "Space Grotesk", sans-serif;
         }
 
         &__subhead{
@@ -50,6 +51,7 @@ export default {
             font-size: 10vmin;
             margin: 0 0 0 30vmin;
             color: $chill;
+            font-family: "Space Grotesk", sans-serif;
 
             span{
                 display: inline-block;

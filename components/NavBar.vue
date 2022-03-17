@@ -11,11 +11,14 @@ export default {
             <NuxtLink to="contact" class="navbar__linksLeft-link navbar--link">Contact</NuxtLink>    
             <NuxtLink to="account" class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-user-alien"></i>Account</NuxtLink>      
         </ul>
+
+        <img src="~/assets/logo.png" class="navbar__logo" />
+
         <ul class="navbar__linksRight">
-            <li class="navbar__linksRight-link navbar__linksRight-seaCover navbar--link navbar--linkGroup">
+            <a href="https://opensea.io/gktechville" target="_blank" class="navbar__linksRight-link navbar__linksRight-seaCover navbar--link navbar--linkGroup">
                 <object data="icons/opensea.svg" class="navbar__linksRight-sea"></object>
                 <span class="navbar__linksRight-seaText navbar--link">opensea</span>
-            </li>
+            </a>
             <li class="navbar__linksRight-link navbar__linksRight-downCover navbar--link navbar--linkGroup">
                 <object data="icons/british.svg" class="navbar__linksRight-brit"></object>
                 <svg class="navbar__linksRight-down" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,11 +32,22 @@ export default {
     
 <style lang="scss" scoped>
     .navbar{
+        position: fixed;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1.5em 12vmin 1.5em 12vmin;
         background-color: #ff7b0009;
+        width: 100%;
+
+        &__logo{
+            position: fixed;
+            top: 1em;
+            left: 48vw;
+            // margin: 0 auto 0 auto ;
+            right: 0;
+            width: 12vmin;
+        }
 
         &--link{
             font-size:0.9em;
@@ -90,6 +104,7 @@ export default {
 
                     &Text{
                         margin: 0 0 0 0.5em;
+                        font-size: 1em;
                     }
 
                     &Cover{
