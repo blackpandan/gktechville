@@ -9,7 +9,7 @@ export default {
   <header class="header">
     <NavBar></NavBar>  
   </header>
-  <video playsinline disablePictureInPicture autoplay muted loop class="backVideo" poster="vids/star.jpg">
+  <video playsinline disablePictureInPicture autoplay muted loop class="backVideo" poster="vids/star.webp">
     <source src="vids/solar.webm" type="video/webm" >
     <source src="vids/solar.mp4" type="video/mp4" >
   </video>
