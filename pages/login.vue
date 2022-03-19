@@ -1,7 +1,7 @@
 <script>
 export default {
     head: {
-        title: "gktech - register"
+        title: "gktech - login"
     }
 }
 </script>
@@ -12,19 +12,17 @@ export default {
 
         <div class="innerController">
             <section class="upperText">
-                <h1 class="upperText__header">Create Account<span class="upperText__header-dot">.</span></h1>
+                <h1 class="upperText__header">Login Account<span class="upperText__header-dot">.</span></h1>
                 <div class="upperText__message">
-                    <span class="upperText__message-text">already have an account?</span>
-                    <NuxtLink to="login" class="upperText__message-login">Login</NuxtLink>
+                    <span class="upperText__message-text">don't have an account?</span>
+                    <NuxtLink to="account" class="upperText__message-register">Register</NuxtLink>
                 </div>
             </section>
             <section class="lowerPart">
                 <form class="lowerPart__form">
-                    <input type="text" name="first_name" placeholder="First Name" id="first_name" class="lowerPart__form-input" />
-                    <input type="text" name="last_name" placeholder="Last Name" id="last_name" class="lowerPart__form-input" />
                     <input type="email" name="Email" placeholder="Email" id="email" class="lowerPart__form-input" />
                     <input type="password" name="Password" placeholder="Password" id="password" class="lowerPart__form-input" />
-                    <input type="submit" value="create account" class="lowerPart__form-submit" />
+                    <input type="submit" value="login" class="lowerPart__form-login" />
                 </form>
             </section>
         </div>
@@ -63,7 +61,7 @@ export default {
                 font-size: 3vmin;
             }
 
-            &-login{
+            &-register{
                 text-decoration: none;
                 color: darken($color: $secondary, $amount: 8);
                 padding: 0 0 0 1vmin;
@@ -103,7 +101,7 @@ export default {
                 }
             }
 
-            &-submit{
+            &-login{
                 padding: 1.5vmin 3vmin 1.5vmin 3vmin;
                 width: fit-content;
                 border: none;
@@ -126,9 +124,9 @@ export default {
         }
     }
 
-    @media only screen and (max-width:780px){
+     @media only screen and (max-width:780px){
         .innerController{
-            padding: 35vmin 0 0 6vmin;
+            padding: 40vmin 0 0 6vmin;
         }
 
         .upperText{
@@ -156,11 +154,12 @@ export default {
                     }
                 }
 
-                &-submit{
+                &-login{
                     margin: 2em 0 0 0;
                     padding: 0.8em 2em 0.8em 2em;
                 }
             }
         }
     }
+
 </style>

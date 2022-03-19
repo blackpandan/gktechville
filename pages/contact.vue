@@ -128,4 +128,41 @@ export default {
         margin: 0 0 0 0;
         padding: 5vmin 12vmin 0 0 ;
     }
+
+    @media only screen and (max-width: 780px){
+        .controller{
+            padding: 30vmin 10vmin 0 10vmin;
+        }
+
+        .contact{
+            &__subhead{
+                margin: 0 0 0 0vmin;
+                font-size: 2em;
+
+                span{
+                    width: 1em;
+                }
+            }
+
+            &__form{
+                &-input{
+                    font-size: 1em;
+                }
+                &-submit{
+                    padding: 0.6em 0 0.6em 0;
+                    font-size: 1em;
+                }
+            }
+
+            &__add{
+                &-message{
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .innerController{
+            margin: 2em 0 0 0;
+        }
+    }
 </style>

@@ -37,6 +37,10 @@ export default {
     '~assets/scss/colors.scss'
   ],
 
+  server: {
+    host: '0.0.0.0'
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
@@ -53,6 +57,7 @@ export default {
     // https://go.nuxtjs.dev/axios'
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
+    '@nuxtjs/device'
   ],
 
   styleResources: {

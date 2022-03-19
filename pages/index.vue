@@ -23,7 +23,7 @@ export default {
       <p class="main__text-normal main--text">CRYPTOCURRENCY</p>
       <p class="main__text-normal main--text">METAVERSE</p>
       <p class="main__text-normal main--text">NFT'S</p>
-      <button class="button button--register">Register</button>
+      <NuxtLink to="account" ><button class="button button--register">Register</button></NuxtLink>
     </div>
 
     <div class="main__links">
@@ -73,6 +73,7 @@ export default {
     padding: 0 0 0 12vmin;
     position: fixed;
     top: 20vh;
+
     &__text{
       &-header{
         font-family: 'Space Grotesk';
@@ -82,7 +83,7 @@ export default {
           font-family: inherit;
           font-size: 8vmin;
           letter-spacing: 0.1em;
-          text-shadow: 3px 4px 0 $primary;
+          text-shadow: 0.5vmin 0.5vmin 0 $primary;
 
           &:not(:first-child){
             margin: 0 0 0 0.5em;
@@ -147,6 +148,7 @@ export default {
     width: fit-content;
     border-radius: 2em;
     transition: all 0.2s;
+    text-decoration: none;
 
 
 
@@ -160,4 +162,28 @@ export default {
     }
   }
 
+
+@media only screen and (max-width: 780px) {
+  .main{
+    padding: 0 0 0 6vmin;
+
+    &__text{
+      &-about{
+        margin: 2em 0 0 0;
+      }
+    }
+  }
+
+  .button{
+    &--register{
+      font-size: 1.1em;
+      letter-spacing: 0.1em;
+      margin: 2em 0 0 0;
+    }
+  }
+
+  .backVideo{
+    object-position: 65% 0%;
+  }
+}
 </style>

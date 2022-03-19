@@ -6,15 +6,21 @@ export default {
 
 <template>
     <nav class="navbar">
-        <ul class="navbar__linksLeft">
+        <ul class="navbar__linksLeft" v-if="$device.isDesktopOrTablet">
             <NuxtLink to="/" class="navbar__linksLeft-link navbar--link">Home</NuxtLink>    
             <NuxtLink to="contact" class="navbar__linksLeft-link navbar--link">Contact</NuxtLink>    
-            <NuxtLink to="account" class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-user-alien"></i>Account</NuxtLink>      
+            <NuxtLink to="account" class="navbar__linksLeft-link navbar--link">Account</NuxtLink>      
         </ul>
+
+        <ul class="navbar__linksRight" v-else-if="$device.isMobile">
+            <NuxtLink to="/" class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-house"></i></NuxtLink>
+            <NuxtLink to="contact" class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-circle-info"></i></NuxtLink>
+            <NuxtLink to="account" class="navbar__linksLeft-link navbar--link"><i class="fa-solid fa-user"></i></NuxtLink>
+        </ul> 
 
         <img src="~/assets/logo.png" class="navbar__logo" />
 
-        <ul class="navbar__linksRight">
+        <ul class="navbar__linksRight" v-if="$device.isDesktopOrTablet">
             <a href="https://opensea.io/gktechville" target="_blank" class="navbar__linksRight-link navbar__linksRight-seaCover navbar--link navbar--linkGroup">
                 <object data="icons/opensea.svg" class="navbar__linksRight-sea"></object>
                 <span class="navbar__linksRight-seaText navbar--link">opensea</span>
@@ -26,7 +32,18 @@ export default {
                 </svg>
 
             </li>  
-        </ul>    
+        </ul>
+
+        <ul class="navbar__linksRight" v-else-if="$device.isMobile">
+            <a href="https://opensea.io/gktechville" target="_blank" class="navbar__linksRight-link navbar__linksRight-seaCover navbar--linkGroup">
+                <object data="icons/opensea.svg" class="navbar__linksRight-sea"></object>
+            </a>
+            <li class="navbar__linksRight-link navbar__linksRight-downCover navbar--linkGroup">
+                <object data="icons/british.svg" class="navbar__linksRight-brit"></object>
+            </li>  
+        </ul>
+
+           
     </nav>
 </template>
     
@@ -39,15 +56,18 @@ export default {
         padding: 1.5em 12vmin 1.5em 12vmin;
         background-color: #ff7b0009;
         width: 100%;
+        cursor: $cursor1;
 
         &__logo{
             position: fixed;
             top: 1em;
-            left: 48vw;
+            left: 45vw;
             // margin: 0 auto 0 auto ;
             right: 0;
             width: 12vmin;
         }
+
+
 
         &--link{
             font-size:0.9em;
@@ -138,5 +158,42 @@ export default {
         }
 
        
+    }
+
+    @media only screen and (max-width: 780px) {
+
+        .navbar{
+            padding-left:6vmin;
+            padding-right:6vmin; 
+
+            &__logo{
+               width: 15vmin; 
+            }
+
+            &--link{
+                font-size: 1.2em;
+            }
+
+            &__linksLeft{
+                &-link{                
+
+                &:not(:first-child){
+                    margin: 0 0 0 3vmin;
+                }
+            }
+            }
+
+            &__linksRight{
+                &-link{                
+                    font-size: 0.8em;
+
+
+                &:not(:first-child){
+                    margin: 0 0 0 4vmin;
+                }
+            }
+            }
+        }
+        
     }
 </style>
