@@ -16,8 +16,7 @@ export default {
   <main class="main">
     <div>
       <p class="main__text-header">
-        <span class="main__text-headerText">LEARN,</span>
-        <span class="main__text-headerText">GET NEWS</span>
+        <span class="main__text-headerText">LEARN</span>
       </p>
       <p class="main__text-about main--text">ABOUT</p>
       <p class="main__text-normal main--text">CRYPTOCURRENCY</p>

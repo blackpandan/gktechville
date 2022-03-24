@@ -23,10 +23,8 @@ export default {
                     <p class="contact__add-message">
                         Tell us about your thoughts and difficulties Experienced Regarding NFT's, MetaVerse and CryptoCurrenvy
                     </p>
-                    <div>
+                <div>
 
-                    </div>
-                </div>
             </div>
         </div>
     </div>
