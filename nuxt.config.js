@@ -1,3 +1,4 @@
+import en from "~/assets/locales/en.json"
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -55,10 +56,16 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios'
+    '@nuxtjs/i18n',
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     '@nuxtjs/device'
   ],
+
+  i18n: {
+    	locales: ["en", "fr", "ar", "zh", "de", "ru", "es", "pl", "la", "ko"],
+      defaultLocale
+  },
 
   styleResources: {
     scss: ['./assets/scss/*.scss']
