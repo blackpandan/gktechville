@@ -12,19 +12,19 @@ export default {
 
         <div class="innerController">
             <section class="upperText">
-                <h1 class="upperText__header">Create Account<span class="upperText__header-dot">.</span></h1>
+                <h1 class="upperText__header">{{$t('create')}}<span class="upperText__header-dot">.</span></h1>
                 <div class="upperText__message">
-                    <span class="upperText__message-text">already have an account?</span>
-                    <NuxtLink to="login" class="upperText__message-login">Login</NuxtLink>
+                    <span class="upperText__message-text">{{$t('alaccount')}}</span>
+                    <NuxtLink to="login" class="upperText__message-login">{{$t('login')}}</NuxtLink>
                 </div>
             </section>
             <section class="lowerPart">
                 <form class="lowerPart__form">
-                    <input type="text" name="first_name" placeholder="First Name" id="first_name" class="lowerPart__form-input" />
-                    <input type="text" name="last_name" placeholder="Last Name" id="last_name" class="lowerPart__form-input" />
-                    <input type="email" name="Email" placeholder="Email" id="email" class="lowerPart__form-input" />
-                    <input type="password" name="Password" placeholder="Password" id="password" class="lowerPart__form-input" />
-                    <input type="submit" value="create account" class="lowerPart__form-submit" />
+                    <input type="text" name="first_name" :placeholder="$t('fname')" id="first_name" class="lowerPart__form-input" />
+                    <input type="text" name="last_name" :placeholder="$t('lname')" id="last_name" class="lowerPart__form-input" />
+                    <input type="email" name="Email" :placeholder="$t('email')" id="email" class="lowerPart__form-input" />
+                    <input type="password" name="Password" :placeholder="$t('password')" id="password" class="lowerPart__form-input" />
+                    <input type="submit" :value="$t('create')" class="lowerPart__form-submit" />
                 </form>
             </section>
         </div>
@@ -49,6 +49,7 @@ export default {
         &__header{
             color: lighten($color: $back, $amount: 60);
             font-size: 7vmin;
+            text-transform: capitalize;
 
             &-dot{
                 color: $secondary;
@@ -61,6 +62,7 @@ export default {
             &-text{
                 color: lighten($color: $back, $amount: 20);
                 font-size: 3vmin;
+                text-transform: capitalize;
             }
 
             &-login{
@@ -68,6 +70,7 @@ export default {
                 color: darken($color: $secondary, $amount: 8);
                 padding: 0 0 0 1vmin;
                 letter-spacing: 0.11em;
+                text-transform: capitalize;
             }
         }
     }
@@ -88,6 +91,7 @@ export default {
                 letter-spacing: 0.09em;
                 cursor: $cursor2;
                 outline: none;
+                text-transform: capitalize;
 
                 &::placeholder{
                     color: lighten($back, 60);

@@ -8,22 +8,22 @@ export default {
     <div class="contact">
         <NavBar></NavBar>
         <div class="controller">
-            <h1 class="contact__head">Contact Us</h1>
-            <h2 class="contact__subhead"><span></span> Have A Question</h2>
+            <h1 class="contact__head">{{$t('ucontact')}}</h1>
+            <h2 class="contact__subhead"><span></span> {{$t('question')}}</h2>
 
             <div class="innerController">
                 <form class="contact__form" action="mailto:gktechville@gmail.com">
-                    <input type="text" name="name" placeholder="Your Name"  class="contact__form-input" />
-                    <input type="email" name="email" id="" placeholder="Your Email" class="contact__form-input" />
-                    <textarea name="message" id="" class="contact__form-input" >Message</textarea>
-                    <input type="submit" value="send" class="contact__form-submit">
+                    <input type="text" name="name" :placeholder="$t('name')"  class="contact__form-input" />
+                    <input type="email" name="email" id="" :placeholder="$t('yemail')" class="contact__form-input" />
+                    <textarea name="message" id="" :placeholder="$t('msg')" class="contact__form-input"></textarea>
+                    <input type="submit" :value="$t('snd')" class="contact__form-submit">
                 </form>
 
                 <div class="contact__add">
                     <p class="contact__add-message">
-                        Tell us about your thoughts and difficulties Experienced Regarding NFT's, MetaVerse and CryptoCurrenvy
+                        {{$t('tell')}}
                     </p>
-                <div>
+                </div>
 
             </div>
         </div>
@@ -41,6 +41,7 @@ export default {
             font-size: 13vmin;
         color: $primary;
         font-family: "Space Grotesk", sans-serif;
+        text-transform: capitalize;
         }
 
         &__subhead{
@@ -50,6 +51,7 @@ export default {
             margin: 0 0 0 30vmin;
             color: $chill;
             font-family: "Space Grotesk", sans-serif;
+            text-transform: capitalize;
 
             span{
                 display: inline-block;
@@ -71,6 +73,7 @@ export default {
                 color: $chill;
                 font-size: 3vmin;
                 background-color: rgba(255, 255, 255, 0);
+                text-transform: capitalize;
 
                 &::placeholder{
                     color: $chill;

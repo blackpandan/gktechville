@@ -12,17 +12,17 @@ export default {
 
         <div class="innerController">
             <section class="upperText">
-                <h1 class="upperText__header">Login Account<span class="upperText__header-dot">.</span></h1>
+                <h1 class="upperText__header">{{$t('alogin')}}<span class="upperText__header-dot">.</span></h1>
                 <div class="upperText__message">
-                    <span class="upperText__message-text">don't have an account?</span>
-                    <NuxtLink to="account" class="upperText__message-register">Register</NuxtLink>
+                    <span class="upperText__message-text">{{$t('dacount')}}</span>
+                    <NuxtLink to="account" class="upperText__message-register">{{$t('register')}}</NuxtLink>
                 </div>
             </section>
             <section class="lowerPart">
                 <form class="lowerPart__form">
-                    <input type="email" name="Email" placeholder="Email" id="email" class="lowerPart__form-input" />
-                    <input type="password" name="Password" placeholder="Password" id="password" class="lowerPart__form-input" />
-                    <input type="submit" value="login" class="lowerPart__form-login" />
+                    <input type="email" name="Email" :placeholder="$t('email')" id="email" class="lowerPart__form-input" />
+                    <input type="password" name="Password" :placeholder="$t('password')" id="password" class="lowerPart__form-input" />
+                    <input type="submit" :value="$t('login')" class="lowerPart__form-login" />
                 </form>
             </section>
         </div>
@@ -47,6 +47,8 @@ export default {
         &__header{
             color: lighten($color: $back, $amount: 60);
             font-size: 7vmin;
+            text-transform: capitalize;
+
 
             &-dot{
                 color: $secondary;
@@ -66,6 +68,7 @@ export default {
                 color: darken($color: $secondary, $amount: 8);
                 padding: 0 0 0 1vmin;
                 letter-spacing: 0.11em;
+                text-transform: capitalize;
             }
         }
     }
@@ -86,6 +89,7 @@ export default {
                 letter-spacing: 0.09em;
                 cursor: $cursor2;
                 outline: none;
+                text-transform: capitalize;
 
                 &::placeholder{
                     color: lighten($back, 60);

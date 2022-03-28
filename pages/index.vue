@@ -16,13 +16,13 @@ export default {
   <main class="main">
     <div>
       <p class="main__text-header">
-        <span class="main__text-headerText">LEARN</span>
+        <span class="main__text-headerText">{{$t('learn')}}</span>
       </p>
-      <p class="main__text-about main--text">ABOUT</p>
-      <p class="main__text-normal main--text">CRYPTOCURRENCY</p>
-      <p class="main__text-normal main--text">METAVERSE</p>
-      <p class="main__text-normal main--text">NFT'S</p>
-      <NuxtLink to="account" ><button class="button button--register">Register</button></NuxtLink>
+      <p class="main__text-about main--text">{{$t('abt')}}</p>
+      <p class="main__text-normal main--text">{{$t('crypto')}}</p>
+      <p class="main__text-normal main--text">{{$t('meta')}}</p>
+      <p class="main__text-normal main--text">{{$t('nft')}}</p>
+      <NuxtLink to="account" ><button class="button button--register">{{$t('reg')}}</button></NuxtLink>
     </div>
 
     <div class="main__links">
@@ -72,6 +72,7 @@ export default {
     padding: 0 0 0 12vmin;
     position: fixed;
     top: 20vh;
+    text-transform: uppercase;
 
     &__text{
       &-header{
@@ -109,9 +110,10 @@ export default {
       position: fixed;
       bottom: 0;
       display: flex;
-      width: 100vw;
-      padding: 0 24vmin 12vmin 0;
+      right: 0;
+      padding: 0 12vmin 12vmin 0;
       justify-content: flex-end;
+      
       
       &-icon{
         color:adjust-color($primary, $alpha: -0.4);
