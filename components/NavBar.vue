@@ -2,8 +2,46 @@
 export default {
     data(){
         return{
-        nav: false
+        nav: false,
+        mnav: false,
+        activeLang: "gb",
+         langs: [
+                {name:"English", flag:"gb", local: "en"},
+                {name:"Afrikaans", flag:"za", local: "af"},
+                {name:"Albanian", flag:"al", local:"sq"},
+                {name:"Arabic", flag:"ae", local: "ar"},
+                {name:"Bangla", flag:"bd", local: "bn"},
+                {name:"Chinese", flag:"cn", local: "zh"},
+                {name:"Dutch", flag:"bq", local: "nl"},
+                {name:"Filipino", flag:"ph", local: "fil"},
+                {name:"French", flag:"fr", local: "fr"},
+                {name:"Germany", flag:"de", local: "de"},
+                {name:"Greek", flag:"gr", local: "el"},
+                {name:"Hebrew", flag:"il", local: "he"},
+                {name:"Hindi", flag:"in", local: "hi"},
+                {name:"Indonesian", flag:"id", local: "id"},
+                {name:"Italian", flag:"it", local: "it"},
+                {name:"Japanese", flag:"jp", local: "ja"},
+                {name:"Korean", flag:"kr", local: "ko"},
+                {name:"Persian", flag:"ir", local: "fa"},
+                {name:"Polish", flag:"pl", local: "pl"},
+                {name:"Portuguese", flag:"pt", local: "pt"},
+                {name:"Rusian", flag:"ru", local: "ru"},
+                {name:"Romanian", flag:"ro", local: "ro"},
+                {name:"Spanish", flag:"es", local: "es"},
+                {name:"Thai", flag:"th", local: "th"},
+                {name:"Turkish", flag:"tr", local: "tr"},
+                {name:"Ukranian", flag:"ua", local: "uk"},
+                {name:"Vietnamese", flag:"vn", local: "vi"},
+            ]
         }
+    },
+    methods: {
+        langSwitch(event){
+            this.activeLang = event;
+        }
+    },
+    created(){
     }
 }
 </script>
@@ -30,23 +68,24 @@ export default {
                 <span class="navbar__linksRight-seaText navbar--link">{{$t('opensea')}}</span>
             </a>
             <li class="navbar__linksRight-link navbar__linksRight-downCover navbar--link navbar--linkGroup" @click="nav = !nav">
-                <object data="icons/british.svg" class="navbar__linksRight-brit"></object>
+                <span :class="['flag-icon','navbar__linksRight-brit', 'flag-icon-'+activeLang, 'flag-icon-squared']"></span>
                 <svg class="navbar__linksRight-down" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.98486 9.74365L0.344238 3.10303C-0.114746 2.64404 -0.114746 1.90186 0.344238 1.44775L1.44775 0.344238C1.90674 -0.114746 2.64893 -0.114746 3.10303 0.344238L7.81006 5.05127L12.5171 0.344238C12.9761 -0.114746 13.7183 -0.114746 14.1724 0.344238L15.2759 1.44775C15.7349 1.90674 15.7349 2.64893 15.2759 3.10303L8.63525 9.74365C8.18604 10.2026 7.44385 10.2026 6.98486 9.74365Z" fill="#EFECCA"/>
                 </svg>
 
             </li>  
-           <LangSwitcher v-if="nav" @outside="nav = !nav"></LangSwitcher>
+           <LangSwitcher v-if="nav" @outside="nav = !nav" :langs="langs" @change="langSwitch"></LangSwitcher>
         </ul>
 
         <ul class="navbar__linksRight" v-else-if="$device.isMobile">
             <a href="https://opensea.io/gktechville" target="_blank" class="navbar__linksRight-link navbar__linksRight-seaCover navbar--linkGroup">
                 <object data="icons/opensea.svg" class="navbar__linksRight-sea"></object>
             </a>
-            <li class="navbar__linksRight-link navbar__linksRight-downCover navbar--linkGroup">
-                <object data="icons/british.svg" class="navbar__linksRight-brit"></object>
+            <li class="navbar__linksRight-link navbar__linksRight-downCover navbar--linkGroup" @click="mnav = !mnav">
+                <span :class="['flag-icon','navbar__linksRight-brit', 'flag-icon-'+activeLang, 'flag-icon-squared']"></span>
             </li>  
         </ul>
+           <MobLangSwitcher v-if="mnav" :langs="langs" @change="langSwitch" @close="mnav = !mnav"></MobLangSwitcher>
 
     </nav>
 </template>
@@ -58,7 +97,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding: 1.5em 12vmin 1.5em 12vmin;
-        background-color: #ff7b0009;
+        background-color: #0000008f;
         width: 100%;
         cursor: $cursor1;
         text-transform: capitalize;
@@ -88,6 +127,10 @@ export default {
             &Group{
                 display: flex;
                 align-items: center;
+            }
+
+            & i{
+                color: white;
             }
         }
 

@@ -42,6 +42,11 @@ export default {
     font-family: 'Roboto', sans-serif;
   }
 
+  .header{
+    position: relative;
+    z-index: 100;
+  }
+
   .controller{
     background-color: rgba(0, 0, 0, 0.281);
     height: 100vh;
@@ -169,9 +174,17 @@ export default {
     padding: 0 0 0 6vmin;
 
     &__text{
+
+      &-headerText{
+        font-size: 2.5em;
+      }
       &-about{
         margin: 2em 0 0 0;
       }
+    }
+
+    &--text{
+      font-size: 1.5em;
     }
   }
 

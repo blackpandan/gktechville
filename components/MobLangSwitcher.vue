@@ -1,50 +1,50 @@
 <script>
 export default {
-    data(){
-        return{
-           
-        }
-    },
+    props:["langs"],
     methods: {
         switchEmitter(value){
             console.log("emitted");
-            this.$emit("change", value)
+            this.$emit("change", value[0]);
+            this.$i18n.locale = value[1];
+            this.$emit("close");
+        },
+        langChange(value){
+            
+            
         }
     },
-    props: ["langs"],
-    created(){
-        // console.log(this.$i18n.locales)
-    }
 }
 </script>
 
 <template>
-    <ul class="langDrop" @mouseleave="$emit('outside')">
+     <ul class="langDrop" @mouseleave="$emit('outside')">
         <div class="langDrop__cont">
-        <li v-for="(lang, index ) in langs" :key="index" @click="switchEmitter(lang.flag)">
-            <div @click="$i18n.locale = lang.local" class="langDrop__group" >
+        <li v-for="(lang, index ) in langs" :key="index" @click="switchEmitter([lang.flag, lang.local])">
+            <div class="langDrop__group" >
                 <span :class="['flag-icon', 'flag-icon-'+lang.flag, 'flag-icon-squared']"></span>
                 <span class="langDrop__text">{{ lang.name }}</span>
             </div>
         </li>
         </div>
+        <i class="fa-solid fa-xmark icon" @click="$emit('close')"></i>
     </ul>
 </template>
 
 <style lang="scss" scoped>
-    .langDrop{
-        position: absolute;
-        top: 3em;
-        right: -6vmin;
-        background-color: rgb(15, 15, 15);
-        padding: 1vw 0.1vw 1em 1.5vw;
-        list-style-type: none;
-        height: 50vh;
-        width: fit-content;
-        
+.langDrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(34, 33, 33);
+    list-style-type: none;
+    padding: 6vh 0 0 0;
 
-        &__cont{
-            padding: 0 1vw 0 0;
+    &__cont{
+            padding: 0 10vw 10vh 10vw;
+            border-top: 2px solid black;
             height: 100%;
             overflow: auto;
     &::-webkit-scrollbar{
@@ -63,8 +63,8 @@ export default {
             }
 
         &__group{
-            padding: 0.7em 2vw 0.7em 2vw;
-            margin: 0.5em 0 0 0;
+            padding: 1em 10vw 1em 6vw;
+            margin: 1em 0 0 0;
             border-radius: 1em;
             background-color: black;
             display: flex;
@@ -78,7 +78,20 @@ export default {
         }
 
         &__text{
-            margin: 0 0 0 2vw;
+            margin: 0 0 0 6vw;
         }
-    }
+}
+
+.icon{
+
+    color: white;
+    position: fixed;
+    top: 1vh;
+    left: 10vw;
+    font-size: 2em;
+
+}
+
+
+
 </style>
