@@ -15,7 +15,7 @@ export default {
                 <h1 class="upperText__header">{{$t('alogin')}}<span class="upperText__header-dot">.</span></h1>
                 <div class="upperText__message">
                     <span class="upperText__message-text">{{$t('dacount')}}</span>
-                    <NuxtLink to="account" class="upperText__message-register">{{$t('register')}}</NuxtLink>
+                    <NuxtLink to="account" class="upperText__message-register">{{$t('reg')}}</NuxtLink>
                 </div>
             </section>
             <section class="lowerPart">

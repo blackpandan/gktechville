@@ -111,9 +111,9 @@ export default {
 
   i18n: {
     	locales: ["af", "ar", "bn", "de", "el", "en", "es", "fa", "fil", "fr", "he", "hi", "id", "it", "ja", "ko", "nl", "pl", "pt", "ro", "ru", "sq", "th", "tr", "uk", "vi", "zh"],
-      defaultLocale: "ko",
+      defaultLocale: "en",
       vueI18n: {
-        fallbackLocale:"ko",
+        fallbackLocale:"en",
         messages: loadLocalMessages()
       }
   },
