@@ -30,7 +30,7 @@ export default {
       <a href="https://twitter.com/gktechville/" target="_blank" class="main__links-link"><i class="fa-brands fa-twitter main__links-icon"></i></a>
       <a href="https://www.instagram.com/gktechville/" target="_blank" class="main__links-link"><i class="fa-brands fa-instagram main__links-icon"></i></a>
       <a href="https://facebook.com/gktechville" target="_blank" class="main__links-link"><i class="fa-brands fa-facebook main__links-icon"></i></a>
-      <a href="" target="_blank" class="main__links-link"><i class="fa-brands fa-discord main__links-icon"></i></a>
+      <a href="https://discord.gg/fSsDZYYwca" target="_blank" class="main__links-link"><i class="fa-brands fa-discord main__links-icon"></i></a>
     </div>
     <!-- <img src="pics/laptop.png" class="backImage" /> -->
   </main>
