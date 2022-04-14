@@ -24,6 +24,7 @@ export default {
         <p class="main__text-normal main--text">{{$t('meta')}}</p>
         <p class="main__text-normal main--text">{{$t('nft')}}</p>
         <NuxtLink to="account" ><button class="button button--register">{{$t('reg')}}</button></NuxtLink>
+        <NuxtLink to="account" ><button class="button button--explore">explore</button></NuxtLink>
       </div>
       <div class="main__links">
         <a href="mailto:gktechville@gmail.com" target="_blank" class="main__links-link"><i class="fa-solid fa-envelope main__links-icon"></i></a>
@@ -258,7 +259,7 @@ export default {
     padding: 0.6em 2em 0.6em 2em;
     margin: 4vmin 0 0 0;
     width: fit-content;
-    border-radius: 2em;
+    // border-radius: 2em;
     transition: all 0.2s;
     text-decoration: none;
     font-family: "Roboto Mono";
@@ -270,7 +271,18 @@ export default {
         background-color: $primary;
         color: $secondary;
         cursor: $cursor2;
-        box-shadow: 2px 3px 0 $secondary
+        box-shadow: 4px 5px 0 $secondary
+      }
+    }
+
+    &--explore{
+      background: $primary;
+      color: $secondary;
+      &:hover{
+        background: $secondary;
+        color: $primary;
+        cursor: $cursor2;
+        box-shadow: 4px 5px 0 $primary;
       }
     }
   }
