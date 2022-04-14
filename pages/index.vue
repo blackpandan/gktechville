@@ -39,6 +39,13 @@ export default {
        {{ $t('about') }}
       </p>
     </section>
+    <section class="drops">
+      <h1 class="drops__heading">Current Collections</h1>
+      <p class="drops__text">this are selcted nft's from our collections</p>
+      <div class="dropCard">
+        <img src="@/assets/competition.jpg" alt="" class="dropCard__img">
+      </div>
+    </section>
     <!-- <img src="pics/laptop.png" class="backImage" /> -->
   </main>
   </div>
@@ -46,7 +53,7 @@ export default {
 
 <style lang="scss">
   *{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .header{
@@ -55,7 +62,6 @@ export default {
   }
 
   .controller{
-    background-color: rgba(0, 0, 0, 0.281);
     height: 100vh;
     width: min(100vw, 100%);
     overflow: hidden;
@@ -90,14 +96,25 @@ export default {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
+    &::-webkit-scrollbar{
+      background-color: transparent;
+      width: 1vw;
+    }
+
+    &::-webkit-scrollbar-thumb{
+      background: darken($secondary, 10);
+      border-radius: 1em;
+    }
+
     section{
       scroll-snap-align: start;
     }
 
 
     .landing{
+      background-color: rgba(0, 0, 0, 0.50);
       padding: 0 0 0 12vmin;
-      height: 100vh;
+      min-height: 100vh;
       width: 100%;
       // overflow: hidden;
       position: relative;
@@ -122,7 +139,48 @@ export default {
         color: darken($primary, 15);
         text-transform: capitalize;
         font-size: calc(1em + 1.5vmin);
+        text-align: justify;
+        font-family: "Roboto Mono", monospace;
+      }
+    }
+
+    .drops{
+      padding: 10vh 11vmin 0 12vmin;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(200deg, rgba(0, 0, 0, 0.703) 55%, #c25e0070);
+
+      &__heading{
+        color: $secondary;
+        text-shadow: 2px 2px $primary;
+        font-size: calc(2em + 2vmin);
         text-align: center;
+        margin: 0 0 0 0;
+        padding: 1em 0 0.5em 0;
+        // background-color: blue;
+      }
+      &__text{
+        color: darken($primary, 15);
+        font-size: calc(0.85em + 1.5vmin);
+        text-align: center;
+        padding: 0 0 calc(2em + 2vh) 0;
+      }
+
+      .dropCard{
+        height: 45vmin;
+        width: 35vmin;
+        border: 1px solid white;
+        overflow: hidden;
+
+        &__img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
 
@@ -147,7 +205,7 @@ export default {
       }
       &-normal{
         color: $primary;
-        text-shadow: 1px 2px 0 $secondary;
+        text-shadow: 1.5px 2px 0 $secondary;
       }
     }
 
@@ -156,6 +214,7 @@ export default {
       margin: 4vmin 0 0 0;
       letter-spacing: 0.2em;
       font-weight: bold;
+      font-family: "Roboto Mono";
     }
 
     &__links{
@@ -193,7 +252,7 @@ export default {
   .button{
     border: none;
     font-size: 1.3em;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     background-color: $secondary;
     color: $primary;
     padding: 0.6em 2em 0.6em 2em;
@@ -202,6 +261,7 @@ export default {
     border-radius: 2em;
     transition: all 0.2s;
     text-decoration: none;
+    font-family: "Roboto Mono";
 
 
 
@@ -222,6 +282,12 @@ export default {
 
     .landing{
       padding: 0 0 0 6vmin;
+    }
+
+    .about{
+      &__text{
+        text-align: start;
+      }
     }
 
     &__text{
