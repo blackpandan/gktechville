@@ -33,8 +33,11 @@ export default {
         <a href="https://discord.gg/fSsDZYYwca" target="_blank" class="main__links-link"><i class="fa-brands fa-discord main__links-icon"></i></a>
       </div>
     </section>
-    <section>
-      <h1>About Us</h1>
+    <section class="about">
+      <h1 class="about__heading">{{ $t('abt') }}</h1>
+      <p class="about__text">
+       {{ $t('about') }}
+      </p>
     </section>
     <!-- <img src="pics/laptop.png" class="backImage" /> -->
   </main>
@@ -55,11 +58,12 @@ export default {
     background-color: rgba(0, 0, 0, 0.281);
     height: 100vh;
     width: min(100vw, 100%);
+    overflow: hidden;
   }
   .backVideo{
     position: fixed;
     z-index: -2;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     object-fit: cover;
     top: 0;
@@ -79,10 +83,16 @@ export default {
   .main{
     // background-image: url('@pics/laptop.png');
     
-    min-height: 100vh;
+    height: 100vh;
     width: min(100vw, 100%);
     text-transform: uppercase;
-    // overflow: hidden;
+
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+
+    section{
+      scroll-snap-align: start;
+    }
 
 
     .landing{
@@ -90,8 +100,30 @@ export default {
       height: 100vh;
       width: 100%;
       // overflow: hidden;
+      position: relative;
       display: flex;
       align-items: center;
+    }
+
+    .about{
+      min-height: 100vh;
+      width: min(100%, 100vw);
+      padding: 20vh 12vmin 10vh 12vmin;
+      line-height: calc(2em + 2.5vmin);
+      background: rgba(0, 0, 0, 0.63) ;
+      &__heading{
+        text-align: center;
+        color: $secondary;
+        text-shadow: 0.5vmin 0.5vmin $primary;
+        font-size: calc(2em + 1.5vmin);
+        padding: calc(0.5em + 1.5vmin) 0 calc(0.5em + 1.5vmin) 0;
+      }
+      &__text{
+        color: darken($primary, 15);
+        text-transform: capitalize;
+        font-size: calc(1em + 1.5vmin);
+        text-align: center;
+      }
     }
 
     &__text{
@@ -127,7 +159,7 @@ export default {
     }
 
     &__links{
-      position: fixed;
+      position: absolute;
       bottom: 0;
       display: flex;
       right: 0;
