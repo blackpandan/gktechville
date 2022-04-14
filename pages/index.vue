@@ -14,24 +14,28 @@ export default {
     <source src="vids/solar.mp4" type="video/mp4" >
   </video>
   <main class="main">
-    <div>
-      <p class="main__text-header">
-        <span class="main__text-headerText">{{$t('learn')}}</span>
-      </p>
-      <p class="main__text-about main--text">{{$t('abt')}}</p>
-      <p class="main__text-normal main--text">{{$t('crypto')}}</p>
-      <p class="main__text-normal main--text">{{$t('meta')}}</p>
-      <p class="main__text-normal main--text">{{$t('nft')}}</p>
-      <NuxtLink to="account" ><button class="button button--register">{{$t('reg')}}</button></NuxtLink>
-    </div>
-
-    <div class="main__links">
-      <a href="mailto:gktechville@gmail.com" target="_blank" class="main__links-link"><i class="fa-solid fa-envelope main__links-icon"></i></a>
-      <a href="https://twitter.com/gktechville/" target="_blank" class="main__links-link"><i class="fa-brands fa-twitter main__links-icon"></i></a>
-      <a href="https://www.instagram.com/gktechvillenft/" target="_blank" class="main__links-link"><i class="fa-brands fa-instagram main__links-icon"></i></a>
-      <a href="https://facebook.com/gktechville" target="_blank" class="main__links-link"><i class="fa-brands fa-facebook main__links-icon"></i></a>
-      <a href="https://discord.gg/fSsDZYYwca" target="_blank" class="main__links-link"><i class="fa-brands fa-discord main__links-icon"></i></a>
-    </div>
+    <section class="landing">
+      <div>
+        <p class="main__text-header">
+          <span class="main__text-headerText">{{$t('learn')}}</span>
+        </p>
+        <p class="main__text-about main--text">{{$t('abt')}}</p>
+        <p class="main__text-normal main--text">{{$t('crypto')}}</p>
+        <p class="main__text-normal main--text">{{$t('meta')}}</p>
+        <p class="main__text-normal main--text">{{$t('nft')}}</p>
+        <NuxtLink to="account" ><button class="button button--register">{{$t('reg')}}</button></NuxtLink>
+      </div>
+      <div class="main__links">
+        <a href="mailto:gktechville@gmail.com" target="_blank" class="main__links-link"><i class="fa-solid fa-envelope main__links-icon"></i></a>
+        <a href="https://twitter.com/gktechville/" target="_blank" class="main__links-link"><i class="fa-brands fa-twitter main__links-icon"></i></a>
+        <a href="https://www.instagram.com/gktechvillenft/" target="_blank" class="main__links-link"><i class="fa-brands fa-instagram main__links-icon"></i></a>
+        <a href="https://facebook.com/gktechville" target="_blank" class="main__links-link"><i class="fa-brands fa-facebook main__links-icon"></i></a>
+        <a href="https://discord.gg/fSsDZYYwca" target="_blank" class="main__links-link"><i class="fa-brands fa-discord main__links-icon"></i></a>
+      </div>
+    </section>
+    <section>
+      <h1>About Us</h1>
+    </section>
     <!-- <img src="pics/laptop.png" class="backImage" /> -->
   </main>
   </div>
@@ -50,7 +54,7 @@ export default {
   .controller{
     background-color: rgba(0, 0, 0, 0.281);
     height: 100vh;
-    width: 100vw;
+    width: min(100vw, 100%);
   }
   .backVideo{
     position: fixed;
@@ -74,10 +78,21 @@ export default {
 
   .main{
     // background-image: url('@pics/laptop.png');
-    padding: 0 0 0 12vmin;
-    position: fixed;
-    top: 20vh;
+    
+    min-height: 100vh;
+    width: min(100vw, 100%);
     text-transform: uppercase;
+    // overflow: hidden;
+
+
+    .landing{
+      padding: 0 0 0 12vmin;
+      height: 100vh;
+      width: 100%;
+      // overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
 
     &__text{
       &-header{
@@ -171,7 +186,11 @@ export default {
 
 @media only screen and (max-width: 780px) {
   .main{
-    padding: 0 0 0 6vmin;
+    // padding: 20vh 0 0 6vmin;
+
+    .landing{
+      padding: 0 0 0 6vmin;
+    }
 
     &__text{
 
