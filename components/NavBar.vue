@@ -105,7 +105,8 @@ export default {
         &__logo{
             position: fixed;
             top: 1em;
-            left: 45vw;
+            left: 50%;
+            transform: translate(-50%);
             // margin: 0 auto 0 auto ;
             right: 0;
             width: 12vmin;
