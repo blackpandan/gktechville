@@ -1,6 +1,89 @@
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+ 
+  data(){
+    return {
+      innerStyles: {},
+      step: '',
+      cards:[
+        1, 2, 3, 4, 5, 6, 7, 8, 9
+      ],
+      images: []
+    }
+  },
+  methods: {
+    importAll(r){
+      r.keys().forEach(key=>(this.images.push({pathLong: r(key), pathShort: key})))
+    },
+    setStep(){
+      const innerWidth = this.$refs.inner.scrollWidth;
+      const totalImage = this.images.length;
+      this.step = `${innerWidth / totalImage}px`;
+    },
+    next(){
+      this.moveLeft();
+      this.afterTransition(() => { 
+      const image = this.images.shift();
+      this.images.push(image);
+      this.resetTranslate()
+      }
+      )
+    
+    },
+    afterTransition(callback){
+    const listener = () => { 
+      callback();
+      this.$refs.inner.removeEventListener('transitionend', listener);
+    };
+    this.$refs.inner.addEventListener('transitionend', listener) 
+    },
+    resetTranslate () {
+    this.innerStyles = {
+      transition: 'none',
+      transform: 'translateX(0)'
+    }
+  },
+      prev(){
+      this.moveRight();
+      this.afterTransition(() => { 
+      const image = this.images.pop();
+      this.images.unshift(image);
+      this.resetTranslate()
+      }
+      )
+    
+    },
+    afterTransition(callback){
+    const listener = () => { 
+      callback();
+      this.$refs.inner.removeEventListener('transitionend', listener);
+    };
+    this.$refs.inner.addEventListener('transitionend', listener) 
+    },
+    resetTranslate () {
+    this.innerStyles = {
+      transition: 'none',
+      transform: 'translateX(0)'
+    }
+  },
+    moveLeft(){
+      this.innerStyles = {
+        transform: `translateX(-${this.step})`
+      }
+    },
+    moveRight(){
+      this.innerStyles = {
+        transform: `translateX(${this.step})`
+      }
+    }
+  },
+  mounted(){
+    this.importAll(require.context('../assets/nft/', true, /\.jpg$/));
+
+    this.setStep()
+    console.log(this.images);
+  }
 }
 </script>
 
@@ -23,8 +106,8 @@ export default {
         <p class="main__text-normal main--text">{{$t('crypto')}}</p>
         <p class="main__text-normal main--text">{{$t('meta')}}</p>
         <p class="main__text-normal main--text">{{$t('nft')}}</p>
-        <NuxtLink to="account" ><button class="button button--register">{{$t('reg')}}</button></NuxtLink>
-        <NuxtLink to="account" ><button class="button button--explore">explore</button></NuxtLink>
+        <NuxtLink to="account" class="button button--register">{{$t('reg')}}</NuxtLink>
+        <NuxtLink to="account" class="button button--explore">explore</NuxtLink>
       </div>
       <div class="main__links">
         <a href="mailto:gktechville@gmail.com" target="_blank" class="main__links-link"><i class="fa-solid fa-envelope main__links-icon"></i></a>
@@ -40,14 +123,22 @@ export default {
        {{ $t('about') }}
       </p>
     </section>
-    <section class="drops">
+    <section class="drops" id="drops">
       <h1 class="drops__heading">Current Collections</h1>
-      <p class="drops__text">this are selcted nft's from our collections</p>
-      <div class="dropCard">
-        <img src="@/assets/competition.jpg" alt="" class="dropCard__img">
+      <p class="drops__text">this are selcted nft's from our meta-idols collections</p>
+      <div class="drops__carousel-wrapper">
+    <div class="drops__carousel">
+      <div class="inner" :style="innerStyles" ref="inner">
+        <div class="dropCard" v-for="(image, index) in images" :key="index">
+          <img :src="image.pathLong" class="dropCard__img" />
+        </div>
       </div>
+    </div>
+    <i class="fa-solid fa-angles-left drops__button drops__button-left" @click="next"></i>
+    <i class="fa-solid fa-angles-right drops__button drops__button-right" @click="prev"></i>
+      </div>
+    
     </section>
-    <!-- <img src="pics/laptop.png" class="backImage" /> -->
   </main>
   </div>
 </template>
@@ -55,6 +146,11 @@ export default {
 <style lang="scss">
   *{
     font-family: 'Roboto Mono', monospace;
+  }
+
+  .dropdd{
+    display: flex;
+    flex-direction: row;
   }
 
   .header{
@@ -155,6 +251,27 @@ export default {
       flex-direction: column;
       background: linear-gradient(200deg, rgba(0, 0, 0, 0.703) 55%, #c25e0070);
 
+       &__button{
+          position: absolute;
+          font-size: calc(2em + 4vmin);
+          top: 50%;
+          transform: translateY(-50%);
+          color: $primary;
+          opacity: 0.6;
+          &-left{
+            left: 0;
+          }
+
+          &-right{
+            right: 0;
+          }
+
+          &:hover{
+            opacity: 1;
+            color: $secondary;
+          }
+        }
+
       &__heading{
         color: $secondary;
         text-shadow: 2px 2px $primary;
@@ -171,23 +288,50 @@ export default {
         padding: 0 0 calc(2em + 2vh) 0;
       }
 
-      .dropCard{
-        height: 45vmin;
-        width: 35vmin;
-        border: 1px solid white;
-        overflow: hidden;
+      &__carousel{
+        width: 90vw;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        position: relative;
 
-        &__img{
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        &::-webkit-scrollbar{
+          display: none;
         }
+
+        &-wrapper{
+          position: relative;
+        }
+
+        .inner{
+          white-space: nowrap;
+          transition: transform 0.3s;
+        }
+
+        .dropCard{
+          height: 45vmin;
+          width: 35vmin;
+          border: none;
+          overflow: hidden;
+          display: inline-flex;
+          box-shadow: 0px 0px 4px black;
+          margin-right: 3vmin;
+          // gap: 10vmin;
+
+          &__img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+       
+      
       }
     }
 
     &__text{
       &-header{
-        font-family: 'Space Grotesk';
+        font-family: 'Space Grotesk', Georgia, 'Times New Roman', Times, serif;
         color: $secondary;
 
         &Text{
@@ -215,7 +359,7 @@ export default {
       margin: 4vmin 0 0 0;
       letter-spacing: 0.2em;
       font-weight: bold;
-      font-family: "Roboto Mono";
+      font-family: "Roboto Mono", monospace;
     }
 
     &__links{
@@ -262,12 +406,15 @@ export default {
     // border-radius: 2em;
     transition: all 0.2s;
     text-decoration: none;
-    font-family: "Roboto Mono";
-
+    font-family: "Roboto Mono", monospace;
+    display: inline-block;
 
 
     &--register{
+      transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease ; 
+      outline: 2px solid $secondary;
       &:hover{
+        outline: none;
         background-color: $primary;
         color: $secondary;
         cursor: $cursor2;
@@ -276,13 +423,16 @@ export default {
     }
 
     &--explore{
-      background: $primary;
-      color: $secondary;
+      background: transparent;
+      outline: 2px solid $secondary;
+      color: $primary;
+      transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease ; 
       &:hover{
-        background: $secondary;
-        color: $primary;
+        outline: none;
+        background: $primary;
+        color: $secondary;
         cursor: $cursor2;
-        box-shadow: 4px 5px 0 $primary;
+        box-shadow: 4px 5px 0 $secondary;
       }
     }
   }
@@ -322,6 +472,9 @@ export default {
       font-size: 1.1em;
       letter-spacing: 0.1em;
       margin: 2em 0 0 0;
+    }
+    &--explore{
+      font-size: 1.1em;
     }
   }
 
