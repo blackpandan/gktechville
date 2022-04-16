@@ -52,6 +52,7 @@ export default {
             <NuxtLink :to="localePath('/')" class="navbar__linksLeft-link navbar--link">{{$t('home')}}</NuxtLink>    
             <NuxtLink :to="localePath('contact')" class="navbar__linksLeft-link navbar--link">{{$t('contact')}}</NuxtLink>    
             <NuxtLink :to="localePath('account')" class="navbar__linksLeft-link navbar--link">{{$t('account')}}</NuxtLink>      
+            <NuxtLink :to="localePath('account')" class="navbar__linksLeft-link navbar--link">{{$t('benefits')}}</NuxtLink>      
         </ul>
 
         <ul class="navbar__linksRight" v-else-if="$device.isMobile">
@@ -63,6 +64,7 @@ export default {
         <img src="~/assets/logo.png" class="navbar__logo" />
 
         <ul class="navbar__linksRight" v-if="$device.isDesktopOrTablet">
+            <NuxtLink :to="localePath('account')" class="navbar__linksLeft-link navbar--link">{{$t('roadmap')}}</NuxtLink>      
             <a href="https://opensea.io/gktechville" target="_blank" class="navbar__linksRight-link navbar__linksRight-seaCover navbar--link navbar--linkGroup">
                 <object data="icons/opensea.svg" class="navbar__linksRight-sea"></object>
                 <span class="navbar__linksRight-seaText navbar--link">{{$t('opensea')}}</span>
@@ -139,6 +141,7 @@ export default {
             display: flex;
             text-decoration: none;
             list-style-type: none;
+            align-items: center;
 
             &-link{                
 
@@ -151,6 +154,7 @@ export default {
         &__linksRight{
             display: flex;
             list-style-type: none;
+            align-items: center;
             position: relative;
             // justify-content: center;
             // align-items: center;

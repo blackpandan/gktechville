@@ -6,10 +6,12 @@
 
 html{
     cursor: $cursor1;
+    scroll-behavior: smooth;
 }
 
 body{
     cursor: $cursor1;
     font-family: "Roboto Mono", monospace;
     background-color: $back;
+    scroll-behavior: smooth;
 }

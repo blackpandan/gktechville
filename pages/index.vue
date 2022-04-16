@@ -107,7 +107,7 @@ export default {
         <p class="main__text-normal main--text">{{$t('meta')}}</p>
         <p class="main__text-normal main--text">{{$t('nft')}}</p>
         <NuxtLink to="account" class="button button--register">{{$t('reg')}}</NuxtLink>
-        <NuxtLink to="account" class="button button--explore">explore</NuxtLink>
+        <a href="#drops" class="button button--explore">explore</a>
       </div>
       <div class="main__links">
         <a href="mailto:gktechville@gmail.com" target="_blank" class="main__links-link"><i class="fa-solid fa-envelope main__links-icon"></i></a>
@@ -162,6 +162,7 @@ export default {
     height: 100vh;
     width: min(100vw, 100%);
     overflow: hidden;
+    scroll-behavior: smooth;
   }
   .backVideo{
     position: fixed;
@@ -189,6 +190,7 @@ export default {
     height: 100vh;
     width: min(100vw, 100%);
     text-transform: uppercase;
+    scroll-behavior: smooth;
 
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -267,6 +269,7 @@ export default {
           }
 
           &:hover{
+            cursor: $cursor2;
             opacity: 1;
             color: $secondary;
           }
@@ -314,7 +317,7 @@ export default {
           overflow: hidden;
           display: inline-flex;
           box-shadow: 0px 0px 4px black;
-          margin-right: 3vmin;
+          margin-right: 5vmin;
           // gap: 10vmin;
 
           &__img{
