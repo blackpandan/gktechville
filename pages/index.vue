@@ -9,7 +9,8 @@ export default {
       cards:[
         1, 2, 3, 4, 5, 6, 7, 8, 9
       ],
-      images: []
+      images: [],
+      height: null
     }
   },
   methods: {
@@ -76,13 +77,23 @@ export default {
       this.innerStyles = {
         transform: `translateX(${this.step})`
       }
+    },
+    setHeight(e){
+      this.height = e;
     }
+  },
+  computed:{
+      cssVars(){
+        return{
+          '--height': this.height+'px'
+          }
+      }
   },
   mounted(){
     this.importAll(require.context('../assets/nft/', true, /\.jpg$/));
 
     this.setStep()
-    console.log(this.images);
+    // console.log(this.images);
   }
 }
 </script>
@@ -90,14 +101,14 @@ export default {
 <template>
   <div class="controller">
   <header class="header">
-    <NavBar></NavBar>  
+    <NavBar @height="setHeight"></NavBar>  
   </header>
   <video playsinline disablePictureInPicture autoplay muted loop class="backVideo" poster="vids/star.webp">
     <source src="vids/solar.webm" type="video/webm" >
     <source src="vids/solar.mp4" type="video/mp4" >
   </video>
   <main class="main">
-    <section class="landing">
+    <section class="landing" :style="cssVars">
       <div>
         <p class="main__text-header">
           <span class="main__text-headerText">{{$t('learn')}}</span>
@@ -117,13 +128,13 @@ export default {
         <a href="https://discord.gg/fSsDZYYwca" target="_blank" class="main__links-link"><i class="fa-brands fa-discord main__links-icon"></i></a>
       </div>
     </section>
-    <section class="about">
+    <section class="about"  :style="cssVars">
       <h1 class="about__heading">{{ $t('abt') }}</h1>
       <p class="about__text">
        {{ $t('about') }}
       </p>
     </section>
-    <section class="drops" id="drops">
+    <section class="drops" id="drops" :style="cssVars">
       <h1 class="drops__heading">Current Collections</h1>
       <p class="drops__text">this are selcted nft's from our meta-idols collections</p>
       <div class="drops__carousel-wrapper">
@@ -137,6 +148,8 @@ export default {
     <i class="fa-solid fa-angles-left drops__button drops__button-left" @click="next"></i>
     <i class="fa-solid fa-angles-right drops__button drops__button-right" @click="prev"></i>
       </div>
+<br>
+      <a href="https://opensea.io/gktechville" class="button button--explore">View All</a>
     
     </section>
   </main>
@@ -224,7 +237,7 @@ export default {
     .about{
       min-height: 100vh;
       width: min(100%, 100vw);
-      padding: 20vh 12vmin 10vh 12vmin;
+      padding: var(--height) 10vmin 10vh 10vmin;
       line-height: calc(2em + 2.5vmin);
       background: rgba(0, 0, 0, 0.63) ;
       &__heading{
@@ -244,12 +257,12 @@ export default {
     }
 
     .drops{
-      padding: 10vh 11vmin 0 12vmin;
+      padding: var(--height)  11vmin 11vmin 12vmin;
       min-height: 100vh;
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       flex-direction: column;
       background: linear-gradient(200deg, rgba(0, 0, 0, 0.703) 55%, #c25e0070);
 
@@ -451,7 +464,8 @@ export default {
 
     .about{
       &__text{
-        text-align: start;
+        text-align: center;
+        font-size: 1.2em;
       }
     }
 
