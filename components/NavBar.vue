@@ -5,7 +5,7 @@ export default {
         nav: false,
         mnav: false,
         activeLang: "gb",
-         langs: [
+        langs: [
                 {name:"English", flag:"gb", local: "en"},
                 {name:"Afrikaans", flag:"za", local: "af"},
                 {name:"Albanian", flag:"al", local:"sq"},
@@ -33,26 +33,35 @@ export default {
                 {name:"Turkish", flag:"tr", local: "tr"},
                 {name:"Ukranian", flag:"ua", local: "uk"},
                 {name:"Vietnamese", flag:"vn", local: "vi"},
-            ]
+            ],
+        height: null
         }
     },
     methods: {
         langSwitch(event){
             this.activeLang = event;
+        },
+        getHeight(){
+            this.height = this.$refs.nav.scrollHeight;
+            console.log(this.height)
         }
     },
-    created(){
+    mounted(){
+        // console.log(this.$refs.nav.scrollHeight);
+        console.log("fromNavBar");
+        this.getHeight();
+        this.$emit("height", this.height)
     }
 }
 </script>
 
 <template>
-    <nav class="navbar">
+    <nav class="navbar" ref="nav" >
         <ul class="navbar__linksLeft" v-if="$device.isDesktopOrTablet">
             <NuxtLink :to="localePath('/')" class="navbar__linksLeft-link navbar--link">{{$t('home')}}</NuxtLink>    
             <NuxtLink :to="localePath('contact')" class="navbar__linksLeft-link navbar--link">{{$t('contact')}}</NuxtLink>    
             <NuxtLink :to="localePath('account')" class="navbar__linksLeft-link navbar--link">{{$t('account')}}</NuxtLink>      
-            <NuxtLink :to="localePath('account')" class="navbar__linksLeft-link navbar--link">{{$t('benefits')}}</NuxtLink>      
+            <a href="#drops" class="navbar__linksLeft-link navbar--link">{{$t('benefits')}}</a>      
         </ul>
 
         <ul class="navbar__linksRight" v-else-if="$device.isMobile">
